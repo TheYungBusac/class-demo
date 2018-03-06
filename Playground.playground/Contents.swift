@@ -93,3 +93,32 @@ let forwardFruits = fruits.sorted(by: { $0 < $1 })
 print("\(forwardFruits)\n")
 
 
+// Enumerations
+enum WeatherType {
+    case sun
+    case cloud
+    case rain
+    case wind(speed: Int)
+    case snow
+}
+
+func weatherDescription(weather: WeatherType) {
+    switch weather {
+    case WeatherType.sun:
+        print("It's a very sunny day.")
+    case .cloud:
+        print("The sky is full of clouds.")
+    case .rain:
+        print("It's rainy and wet today.")
+    case .wind(let speed) where speed > 20:
+        print("It's very windy.")
+    case .wind:
+        print("There's a slight breeze")
+    case .snow:
+        print("It's snowing")
+    }
+}
+
+weatherDescription(weather: .wind(speed: 21))
+weatherDescription(weather: .wind(speed: 1))
+weatherDescription(weather: .sun)
